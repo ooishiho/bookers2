@@ -1,3 +1,15 @@
+<!--ログインしているユーザーの情報-->
+<h1>User info</h1>
+<%= @user = current_user %>
+<%= image_tag 'sample-author1.jpg' %>
+<h4>name</h4>
+<%= f.text_field :name%>
+<h4>introduction</h4>
+<%= f.text_area :introducrion %>
+<!--users/editボタンの表示-->
+
+
+<!--新規投稿-->
 <h1>New book</h1>
 <%= form_with model: @book do |f| %>
 <h4>Title</h4>
