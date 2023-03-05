@@ -1,11 +1,11 @@
 <div>
  <h1>Book detail</h1>
- <p><%= image_tag'sample-author1.jpg' %></p>
+ <p>投稿ユーザー画像：<%= image_tag @user.get_profile_image(100,100) %></p>
  <a><%= @book.user.name %></a>
  <span><%= link_to book.title,"/books/#{book.id}" %></span>
  <p><%= @book.body %></p>
  <!--editボタンとdestroyボタンの追加-->
  <% if @book.user == current_user %>
   <%= link_to "destroy", book_path(@book),method: :delete %>
- <% end 
+ <% end %>
 </div>

@@ -7,13 +7,14 @@
  <%= f.submit 'CreateBook' %>
 <% end %>
 
+<p>投稿ユーザー画像：<%= image_tag @user.get_profile_image(100,100) %></p>
 
 <% @books.each do |book| %>
  <div>
   <p>ユーザ画像<%= image_tag 'sample-author1.jpg' %></p>
-  <a><%= @book.user.name %></a>
+  <a><%= book.user.name %></a>
   <span><%= link_to book.title,"/books/#{book.id}" %></span>
-  <p><%= @book.body %></p>
+  <p><%= book.body %></p>
  </div>
 
  <% end %>

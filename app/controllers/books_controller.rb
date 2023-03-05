@@ -3,7 +3,7 @@ class BooksController < ApplicationController
   def index
    @book = Book.new
    @books = Book.all
-
+   @user = current_user
   end
 
   def create
@@ -15,6 +15,7 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def edit
@@ -34,12 +35,5 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :body)
   end
- 
-  def get_image
-    unless image.attached?
-      file_path = Rails.root.join('app/assets/images/no_image.jpg')
-      image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
-    end
-    image
-  end
+
 end
