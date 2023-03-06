@@ -1,4 +1,4 @@
-<!-- ユーザーの詳細 -->
+<!-- ユーザーの詳細　部分テンプレート -->
 <div>
   <h3><%= @user.name %></h3>
   <%= image_tag @user.get_profile_image(100,100) %>
@@ -7,13 +7,16 @@
 <% end %>
 </div>
 
-<!-- ユーザーの投稿一覧 -->
+<!-- ユーザーの投稿一覧 右ページ-->
 
+<h1>Books</h1>
+<h4>Title</h4>
+<h4>Opinion</h4>
 <% @books.each do |books| %>
 <div>
-  <p>投稿ユーザー画像：<%= image_tag books.user.get_profile_image(100,100) %></p>
+  <%= image_tag books.user.get_profile_image(100,100) %>
   <p><%= books.title %></p>
   <p><%= books.body %></p>
-  <p>ユーザーネーム：<%= books.user.name %></p>
+  <%= books.user.name %>
 </div>
 <% end %>

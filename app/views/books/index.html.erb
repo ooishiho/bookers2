@@ -1,12 +1,18 @@
+<!--部分テンプレートで表示する-->
+
 <!--ログインしているユーザーの情報-->
 <h1>User info</h1>
-<%= @user = current_user %>
-<%= image_tag 'sample-author1.jpg' %>
+<% @user = current_user %>
+<%= image_tag @user.get_profile_image(100,100) %>
 <h4>name</h4>
-<%= f.text_field :name%>
+<p><%= @user.name %></p>
 <h4>introduction</h4>
-<%= f.text_area :introducrion %>
+<p><%= @user.introduction %></p>
+<!-- user自己紹介文 -->
 <!--users/editボタンの表示-->
+<button>
+ <%= link_to "アイコン", edit_user_path(@user)  %>
+</button>
 
 
 <!--新規投稿-->
@@ -19,14 +25,19 @@
  <%= f.submit 'CreateBook' %>
 <% end %>
 
-<p>投稿ユーザー画像：<%= image_tag @user.get_profile_image(100,100) %></p>
 
+<!--右側に表示する部分（URLで変更する-->
+
+
+<h1>Books</h1>
+<h4>Title</h4>
+<h4>Opinion</h4>
 <% @books.each do |book| %>
  <div>
-  <p>ユーザ画像<%= image_tag 'sample-author1.jpg' %></p>
-  <a><%= book.user.name %></a>
+  <%= image_tag @user.get_profile_image(100,100) %>
   <span><%= link_to book.title,"/books/#{book.id}" %></span>
   <p><%= book.body %></p>
+  <a><%= book.user.name %></a>
  </div>
 
  <% end %>
