@@ -6,9 +6,9 @@
 <h4>name</h4>
 <% @user.each do |user| %>
 <div>
-  <%= image_tag @user.get_profile_image(100,100) %>
-  <p><%= book.user.name %></p>
+  <%= image_tag user.get_profile_image(100,100) %>
+  <p><%= user.name %></p>
   <!--showリンクの追加-->
-  <%= link_to "Show", user_path(@user[:id]) %>
+  <%= link_to "Show", user_path(user.id) %>
 </div>
 <% end %>

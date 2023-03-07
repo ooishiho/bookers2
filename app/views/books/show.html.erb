@@ -4,7 +4,7 @@
 <div>
  <h1>Book detail</h1>
  <%= image_tag @user.get_profile_image(100,100) %>
- <a><%= @book.user.name %></a>
+ <%= link_to @user[:name], user_path(@user[:id]) %>
  <!--投稿したタイトルのリンク表示-->
  <%= link_to @book[:id], book_path(@book[:id]) %>
  <%= @book.body %>
