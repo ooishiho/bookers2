@@ -1,6 +1,13 @@
+<!--バリデーション-->
+ <% if @book.error.any? %>
+  <%= @book.errors.count %>error occurred.
+ <ul>
+  <% @book.errors.full_messages.each do |message| %>
+  <li><%= message %></li>
+ <% end %>
+  </ul>
+ <% end %>
 <!--部分テンプレートで表示する-->
-<% render 'layouts/header' %>
-<!--ログインしているユーザーの情報-->
 <%= render 'books/list', user:@user ,book:@book %>
 
 <!--右側に表示する部分（URLで変更する-->
@@ -16,4 +23,4 @@
   <a><%= book.user.name %></a>
  </div>
  <% end %>
- <% render 'layouts/footer' %>
+

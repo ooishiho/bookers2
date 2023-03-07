@@ -1,9 +1,5 @@
-<!--部分テンプレート-->
-<% render 'layouts/header' %>
-<%= render 'books/list', user:@user ,book:@book %>
-
 <h1>Editing Book</h1>
-<%= form_with model: @book do |f| %>
+<%= form_with model: Book do |f| %>
 <!--作成された内容の編集ができるようにする-->
 <h4>Title</h4>
 <%= f.text_fild :title %>
@@ -14,8 +10,7 @@
 <button>
 <%= f submit 'Update Book' %>
 </button>
+<% end %>
 <!--showとbackリンクの作成-->
 <%= link_to "Show", book_path(@book[:id]) %>|
 <%= link_to "Back", books_path %>
-<% end %>
-<!--default-image.jpg-->
