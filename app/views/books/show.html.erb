@@ -1,3 +1,8 @@
+<!--headerテンプレート-->
+<% render 'layouts/header' %>
+<!--ユーザー情報などの部分テンプレート-->
+<%= render 'books/list', user:@user ,book:@book %>
+
 <div>
  <h1>Book detail</h1>
  <p>投稿ユーザー画像：<%= image_tag @user.get_profile_image(100,100) %></p>
@@ -11,3 +16,5 @@
   <%= link_to "Destroy", book_path(@book),method: :delete %>
  <% end %>
 </div>
+<!--フッターのテンプレート-->
+  <% render 'layouts/footer' %>

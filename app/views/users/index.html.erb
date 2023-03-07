@@ -1,5 +1,6 @@
+<% render 'layouts/header' %>
 <!--部分テンプレートの追加-->
-
+<%= render 'books/list', user:@user ,book:@book %>
 <!--ユーザーの一覧-->
 <h1>Users</h1>
 <h4>image</h4>
@@ -9,6 +10,6 @@
   <%= image_tag @user.get_profile_image(100,100) %>
   <p><%= book.user.name %></p>
   <!--showリンクの追加-->
-  <%= link_to "Show", user_path(@user) %>
+  <%= link_to "Show", user_path(@user[:id]) %>
 </div>
 <% end %>

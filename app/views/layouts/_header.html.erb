@@ -1,0 +1,58 @@
+ <header>
+    <% if user_signed_in? %>
+      <li>
+
+      </li>
+      <li>
+        <%= link_to 'Users', users_path %>
+      </li>
+      <li>
+        <%= link_to 'Books', books_path %>
+      </li>
+      <li>
+       <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+      </li>
+    <% else %>
+      <li>
+        <%= link_to 'Home', root_path %>
+      </li>
+      <li>
+      <%= link_to 'About', about_path %>
+      </li>
+      <li>
+        <%= link_to "Sign up", new_user_registration_path %>
+      </li>
+      <li>
+        <%= link_to "Log in", new_user_session_path %>
+      </li>
+    <% end %>
+  </header>
+  <!--ログインしているユーザーの情報-->
+<bosy>
+ <h1>User info</h1>
+ <% @user = current_user %>
+ <%= image_tag @user.get_profile_image(100,100) %>
+ <h4>name</h4>
+ <p><%= @user.name %></p>
+ <h4>introduction</h4>
+ <p><%= @user.introduction %></p>
+ <!-- user自己紹介文 -->
+ <!--users/editボタンの表示-->
+ <button>
+ <%= link_to "アイコン", edit_user_path(@user)  %>
+ </button>
+
+
+<!--新規投稿-->
+<h1>New book</h1>
+<%= form_with model: @book do |f| %>
+<h4>Title</h4>
+ <%= f.text_field :title %>
+<h4>Opinion</h4>
+ <%= f.text_area :body %>
+ <%= f.submit 'CreateBook' %>
+<% end %>
+</body>
+<footer>
+  CopyRight Infratop.inc
+</footer>

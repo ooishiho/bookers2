@@ -1,12 +1,6 @@
+<% render 'layouts/header' %>
 <!-- ユーザーの詳細　部分テンプレート -->
-<div>
-  <h3><%= @user.name %></h3>
-  <%= image_tag @user.get_profile_image(100,100) %>
-<% if @user == current_user %>
- <p><%= link_to "edit", edit_user_path(@user) %></p>
-<% end %>
-</div>
-
+<%= render 'books/list', user:@user ,book:@book %>
 <!-- ユーザーの投稿一覧 右ページ-->
 
 <h1>Books</h1>
