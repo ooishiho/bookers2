@@ -1,10 +1,16 @@
-<!--フラッシュメッセージ-->
-<%= flash[:notice] %>
+<% if @book.errors.any? %>
+ <%= @book.errors.count %>件のエラーが発生
+ <ul>
+    <% @book.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+ </ul>
+ <% end %>
 <!--部分テンプレート-->
-<%= render 'books/list', user:@user ,book:@book %>
+<%= render 'books/list', user:@user ,book:@newbook %>
 
 <h1>Editing Book</h1>
-<%= form_with model: Book do |f| %>
+<%= form_with model: @book do |f| %>
 <!--作成された内容の編集ができるようにする-->
 <h4>Title</h4>
 <%= f.text_field :title %>
