@@ -2,9 +2,6 @@
 
 
 <!--部分テンプレート左側-->
-<div class="container px-5 px-sm-0">
- <div class="row">
-  <div class="col-md-3">
    <h1>User info</h1>
 <% user = current_user %>
 <%= image_tag user.get_profile_image(100,100) %>
@@ -22,43 +19,39 @@
    </tbody>
   </table>
   <div class="row">
-   
-   <%= link_to edit_user_path(user), class:"btn btn-outline-secondary btn-block edit_user_path" %>
+
+   <%= link_to edit_user_path(user), class:"btn btn-outline-secondary btn-block edit_user_path" do %>
+  <i class="fas fa-user-cog"></i>
+   <% end %>
   </div>
-  </div>
-  
+
   <h2 class="mt-3">New book</h2>
-  <form action="books" accept-charset="UTF-8" method"post">
-   <input type="hidden" name="authenticity_token" value="H50MKAIZO1l_pg1TPnCUwNjIsoibtgxHodzQ6swkWqLrsgUyNirLtMZ45v7vDhiuxViwQmEN1kFo7XzBnrtrJw" autocomplete="off">
-  <div class="form-group">
-   <labek for="book_title">Title</labek>
-   <input class="form-control book_title" type="text" name="book[title]" id="book_title">
-  </div>
-  <div class="form-group">
-   <label for="book_opinion">Opinion</label>
-   <textarea class="form-control book_body" name="book[body]" id="book_body">
-   </textarea>
-  </div>
-  <div class="form-group">
-   <input type="submit" name="commit" value="Create Book" class="btn btn-success" data-disable-with="Create Book">
-  </div>
-  </form>
- </div>
-  
-<!-- user自己紹介文 -->
-<!--users/editボタンの表示-->
-<button>
- <%= link_to "アイコン", edit_user_path(user)  %>
-</button>
-
-
-<!--新規投稿-->
-<h1>New book</h1>
-<%= form_with model: book do |f| %>
-<h4>Title</h4>
- <%= f.text_field :title %>
-<h4>Opinion</h4>
- <%= f.text_area :body %>
- <%= f.submit 'CreateBook' %>
-<% end %>
+  <!--<form action="books" accept-charset="UTF-8" method"post">-->
+  <!-- <input type="hidden" name="authenticity_token" value="H50MKAIZO1l_pg1TPnCUwNjIsoibtgxHodzQ6swkWqLrsgUyNirLtMZ45v7vDhiuxViwQmEN1kFo7XzBnrtrJw" autocomplete="off">-->
+  <!--<div class="form-group">-->
+  <!-- <labek for="book_title">Title</labek>-->
+  <!-- <input class="form-control book_title" type="text" name="book[title]" id="book_title">-->
+  <!--</div>-->
+  <!--<div class="form-group">-->
+  <!-- <label for="book_opinion">Opinion</label>-->
+  <!-- <textarea class="form-control book_body" name="book[body]" id="book_body">-->
+  <!-- </textarea>-->
+  <!--</div>-->
+  <!--<div class="form-group">-->
+  <!-- <input type="submit" name="commit" value="Create Book" class="btn btn-success" data-disable-with="Create Book">-->
+  <!--</div>-->
+  <!--</form>-->
+  <%= form_with model: @book, url: books_path, method: :post do |f| %>
+   <div class="form-group">
+    <%= f.label :title, 'Title' %>
+    <%= f.text_field :title, class: 'form-control' %>
+   </div>
+   <div class="form-group">
+    <%= f.label :body, 'Opinion' %>
+    <%= f.text_area :body, class: 'form-control' %>
+   </div>
+   <div class="form-group">
+    <%= f.submit 'Create Book', class: 'btn btn-success' %>
+   </div>
+  <% end %>
 
