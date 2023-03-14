@@ -3,7 +3,8 @@
 
 <!--部分テンプレート左側-->
    <h1>User info</h1>
-<% user = current_user %>
+<!--投稿者のshowへ遷移する-->
+<%  user_path(user.id) %>
 <%= image_tag user.get_profile_image(100,100) %>
   <table class="table">
    <tbody>
@@ -19,7 +20,7 @@
    </tbody>
   </table>
   <div class="row">
-
+<!--本人以外は編集できない-->
    <%= link_to edit_user_path(user), class:"btn btn-outline-secondary btn-block edit_user_path" do %>
   <i class="fas fa-user-cog"></i>
    <% end %>
