@@ -13,16 +13,16 @@
   <td><%= image_tag @user.get_profile_image(80,80) %>
    <br><%= link_to @user[:name], user_path(@user[:id]) %>
      </td>
-  
+
   <td><%= link_to @book[:id], book_path(@book[:id]) %></td>
   <td><%= @book.body %></td>
-   <% if @book.user == current_user %>
+  <% if user_signed_in? && current_user.id == @book.user_id %>
   <div class="row">
-  <td> <a class="btn btn-sm btn-success edit_book_path" href="/books/(@book[:id])/edit">Edit</a></td>
-  <td><a data-confirm="本当に消しますか？" class="btn btn-sm btn-danger destroy_books_path" rel="nofollow" data-method="delete" href="/books/id">Destroy</a></td>
+  <td><%= link_to "Edit", edit_book_path(@book), class:"btn btn-sm btn-success edit_book_path(@book)" %></td>
+  <td><%= link_to "Destroy", book_path(@book),  method: :delete ,data: {confirm: "本当に削除しますか？"}, class:"btn btn-sm btn-danger destroy_books_path"  %></td>
+  </div>
  <% end %>
  </tr>
  </tobody>
 </table>
-</div>
 </div>
