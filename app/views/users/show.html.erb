@@ -23,7 +23,7 @@
   <% @books.each do |books| %>
   <tr>
    <td><%= image_tag books.user.get_profile_image(80,80) %></td>
-   <td><%= link_to books[:id], book_path(books[:id])  %></td>
+   <td><%= link_to books[:title], book_path(books[:id])  %></td>
    <td><p><%= books.body %></p></td>
   </tr>
  <% end %>
